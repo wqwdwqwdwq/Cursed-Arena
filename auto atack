@@ -1,0 +1,52 @@
+local Player = game.Players.LocalPlayer
+local HRP = game.Players.LocalPlayer.Character.HumanoidRootPart
+local P 
+_G.Valorr = true
+local BodyPosition = Instance.new("BodyVelocity")
+
+spawn(function()
+	while wait() do 
+
+		local args = {
+			[1] = "AttackHandler",
+			[2] = "Punch",
+			[3] = {
+				[1] = false,
+				[2] = false
+			}
+		}
+
+		game:GetService("ReplicatedStorage").remotes.base:FireServer(unpack(args))
+
+
+
+
+
+end
+end)
+
+while _G.Valorr  do 
+	wait()
+	if Player.Character:FindFirstChildWhichIsA("Humanoid").Health <= Player.Character:FindFirstChildWhichIsA("Humanoid").MaxHealth/9 then
+		_G.Valorr = false
+		while not _G.Valorr do 
+			wait()
+			Player.Character.HumanoidRootPart.CFrame =  CFrame.new(0,40,0)
+			if Player.Character:FindFirstChildWhichIsA("Humanoid").Health >= Player.Character:FindFirstChildWhichIsA("Humanoid").MaxHealth /4 then
+				_G.Valorr = true
+			end
+		end
+	end
+
+
+
+		for _, Players in pairs(game.Players:GetPlayers()) do
+
+
+			if  Players ~= game.Players.LocalPlayer.Character then
+				Player.Character.HumanoidRootPart.CFrame =  Player.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-2)
+
+
+		end
+	end
+end
